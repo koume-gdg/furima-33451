@@ -1,24 +1,60 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#　テーブル設計
 
-Things you may want to cover:
+## usersテーブル
 
-* Ruby version
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| family_name      | string | null: false |
+| first_name       | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana  | string | null: false |
+| birthday         | date   | null: false |
 
-* System dependencies
+### Association
+- has_many : products
+- has_many : buyers
 
-* Configuration
 
-* Database creation
+## productsテーブル
 
-* Database initialization
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| price           | string     | null: false                    |
+| description     | string     | null: false                    |
+| status          | string     | null: false                    |
+| shipping_cost   | string     | null: false                    |
+| shipping_source | string     | null: false                    |
+| shipping_day    | string     | null: false                    |
+| user_id         | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- belongs_to : user
+- has_many : buyers
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## buyersテーブル
 
-* ...
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| family_name      | string     | null: false                    |
+| first_name       | string     | null: false                    |
+| family_name_kana | string     | null: false                    |
+| first_name_kana  | string     | null: false                    |
+| post_code        | string     | null: false                    |
+| prefecture       | string     | null: false                    |
+| city             | string     | null: false                    |
+| address          | string     | null: false                    |
+| building         | string     |                                |
+| phone_number     | string     |                                |
+| user_id          | references | null: false, foreign_key: true |
+| product_id       | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to : user
+- belongs_to : product
