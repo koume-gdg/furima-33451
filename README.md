@@ -24,7 +24,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| price              | string     | null: false                    |
+| price              | integer     | null: false                    |
 | description        | string     | null: false                    |
 | status_id          | integer    | null: false                    |
 | shipping_cost_id   | integer    | null: false                    |
@@ -43,7 +43,7 @@
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | item    | references | null: false, foreign_key: true |
-| users   | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
