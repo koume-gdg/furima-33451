@@ -17,15 +17,15 @@
 
 ### Association
 - has_many :items
-- has_one :buyer
+- have_many :buyer
 
 ## itemsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| price              | integer     | null: false                    |
-| description        | string     | null: false                    |
+| price              | integer    | null: false                    |
+| description        | text       | null: false                    |
 | status_id          | integer    | null: false                    |
 | shipping_cost_id   | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
