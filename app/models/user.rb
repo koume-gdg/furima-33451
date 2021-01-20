@@ -10,7 +10,6 @@ class User < ApplicationRecord
          VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/ #全角ひらがな、カタカナ、漢字
 
          validates :nickname,           presence: true
-         validates :email,              uniqueness: true
          validates :family_name,        presence: true,  format: {with: VALID_NAME_REGEX}
          validates :first_name,         presence: true,  format: {with: VALID_NAME_REGEX}
          validates :family_name_kana,   presence: true, format: {with: VALID_KANA_REGEX}
