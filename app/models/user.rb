@@ -18,4 +18,6 @@ class User < ApplicationRecord
   end
 
   validates :password,           format: { with: VALID_PASSWORD_REGEX }
+
+  has_many :items
 end
