@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   VALID_PRICE_REGEX = /\A[0-9]+\z/ #半角数字
 
   with_options presence: true do
+    validates :name
     validates :image
     validates :description
     validates :category_id
