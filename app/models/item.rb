@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :category
 
-  VALID_PRICE_REGEX = /\A[0-9]+\z/ #半角数字
+  VALID_PRICE_REGEX = /\A[0-9]+\z/ # 半角数字
 
   with_options presence: true do
     validates :name
@@ -19,8 +19,6 @@ class Item < ApplicationRecord
     validates :shipping_cost_id
     validates :prefecture_id
     validates :shipping_day_id
-    validates :price,            format: { with: VALID_PRICE_REGEX }, inclusion: {in: 300..9999999}
+    validates :price, format: { with: VALID_PRICE_REGEX }, inclusion: { in: 300..9_999_999 }
   end
-  
-
 end

@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
-    # binding.pry
-    @item.image = fixture_file_upload("/files/hamburger.jpg")
+    @item.image = fixture_file_upload('/files/hamburger.jpg')
   end
 
   describe '商品新規投稿する' do
@@ -27,12 +26,12 @@ RSpec.describe Item, type: :model do
       it 'priceが半角数字以外では投稿できない' do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceが10,000,000円以上だと投稿できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'descriptionが空のときは投稿できない' do
         @item.description = ''
@@ -70,10 +69,5 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
     end
-    
   end
-
-
-
-
 end

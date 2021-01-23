@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
-    
   end
 
   describe 'ユーザー新規登録' do
@@ -34,7 +33,7 @@ RSpec.describe User, type: :model do
       it 'emailは@がないと登録ができない' do
         @user.email = 'aaaaaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'family_nameが空では登録できない' do
         @user.family_name = ''
@@ -105,7 +104,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it "passwordが全角では登録できない" do
+      it 'passwordが全角では登録できない' do
         @user.password = 'ＡＢＣ１２３'
         @user.password_confirmation = @user.password
         @user.valid?
