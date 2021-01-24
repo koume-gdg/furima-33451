@@ -14,11 +14,11 @@ class Item < ApplicationRecord
     validates :name
     validates :image
     validates :description
-    validates :category_id
-    validates :status_id
-    validates :shipping_cost_id
-    validates :prefecture_id
-    validates :shipping_day_id
+    validates :category_id, inclusion: { in: 2..11 }
+    validates :status_id, inclusion: { in: 2..7 }
+    validates :shipping_cost_id, inclusion: { in: 2..3 }
+    validates :prefecture_id, inclusion: { in: 2..48 }
+    validates :shipping_day_id, inclusion: { in: 2..4 }
     validates :price, format: { with: VALID_PRICE_REGEX }, inclusion: { in: 300..9_999_999 }
   end
 end
