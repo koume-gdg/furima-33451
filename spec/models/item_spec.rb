@@ -34,7 +34,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceが10,000,000円以上だと投稿できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
@@ -51,7 +51,7 @@ RSpec.describe Item, type: :model do
       it 'status_idが---のときは投稿できない' do
         @item.status_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status is not included in the list")
+        expect(@item.errors.full_messages).to include('Status is not included in the list')
       end
       it 'shipping_cost_idが空のときは投稿できない' do
         @item.shipping_cost_id = ''
@@ -61,7 +61,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_cost_idが---のときは投稿できない' do
         @item.shipping_cost_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping cost is not included in the list")
+        expect(@item.errors.full_messages).to include('Shipping cost is not included in the list')
       end
       it 'prefecture_idが空のときは投稿できない' do
         @item.prefecture_id = ''
@@ -71,7 +71,7 @@ RSpec.describe Item, type: :model do
       it 'prefecture_idが---のときは投稿できない' do
         @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture is not included in the list")
+        expect(@item.errors.full_messages).to include('Prefecture is not included in the list')
       end
       it 'shipping_day_idが空のときは投稿できない' do
         @item.shipping_day_id = ''
@@ -81,7 +81,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_day_idが---のときは投稿できない' do
         @item.shipping_day_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping day is not included in the list")
+        expect(@item.errors.full_messages).to include('Shipping day is not included in the list')
       end
       it 'category_idが空のときは投稿できない' do
         @item.category_id = ''
@@ -91,7 +91,7 @@ RSpec.describe Item, type: :model do
       it 'category_idが---のときは投稿できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not included in the list")
+        expect(@item.errors.full_messages).to include('Category is not included in the list')
       end
       it 'imageが空のときは投稿できない' do
         @item.image = nil
