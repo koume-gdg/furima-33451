@@ -1,7 +1,7 @@
 class BuyerAddress
 
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :address, :city, :building, :phone_number, :item_id, :user_id
+  attr_accessor :post_code, :prefecture_id, :address, :city, :building, :phone_number, :item_id, :user_id, :token
   
   VALID_POSTCODE_REGEX= /\A\d{3}[-]\d{4}\z/ #000-1234
   VALID_PHONENUMBER_REGEX= /\A\d{10,11}\z/ #ハイフンなし10桁or11桁電話番号
@@ -13,6 +13,7 @@ class BuyerAddress
     validates :address
     validates :city
     validates :phone_number    ,format: { with: VALID_PHONENUMBER_REGEX }
+    validates :token
   end
 
   def save
