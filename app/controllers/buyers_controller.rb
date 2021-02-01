@@ -6,9 +6,6 @@ class BuyersController < ApplicationController
 
   def index
     @buyer_address = BuyerAddress.new
-
-    @buyer = Buyer.new
-    @buyers = @buyer.item
     # インデックスのフォームのあとの変数　＝　フォームオブジェクトの名前.new
   end
 

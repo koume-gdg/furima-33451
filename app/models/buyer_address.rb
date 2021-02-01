@@ -21,7 +21,5 @@ class BuyerAddress
 
     Address.create(post_code: post_code, prefecture_id: prefecture_id, address: address, city: city, phone_number: phone_number,
                    building: building, buyer_id: buyer.id)
-
-    # Item.create(name: name, price: price)
   end
 end
