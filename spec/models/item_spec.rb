@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
       it 'status_idが---のときは投稿できない' do
-        @item.status_id = '1'
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Status is not included in the list')
       end
@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping cost can't be blank")
       end
       it 'shipping_cost_idが---のときは投稿できない' do
-        @item.shipping_cost_id = '1'
+        @item.shipping_cost_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping cost is not included in the list')
       end
@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'prefecture_idが---のときは投稿できない' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture is not included in the list')
       end
@@ -80,7 +80,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
       it 'shipping_day_idが---のときは投稿できない' do
-        @item.shipping_day_id = '1'
+        @item.shipping_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping day is not included in the list')
       end
@@ -90,7 +90,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'category_idが---のときは投稿できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category is not included in the list')
       end
