@@ -92,6 +92,13 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Item can't be blank")
        end
+
+       it 'prefecture_idが---のときは投稿できない' do
+        @buyer_address.prefecture_id = '1'
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include('Prefecture is not included in the list')
+      end
+
     end
   end
 end

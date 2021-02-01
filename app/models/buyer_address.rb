@@ -7,13 +7,14 @@ class BuyerAddress
 
   with_options presence: true do
     validates :post_code, format: { with: VALID_POSTCODE_REGEX }
-    validates :prefecture_id
+    validates :prefecture_id, inclusion: { in: 2..48 }
     validates :address
     validates :city
     validates :phone_number, format: { with: VALID_PHONENUMBER_REGEX }
     validates :token
     validates :item_id
     validates :user_id
+
   end
 
   def save
