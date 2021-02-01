@@ -2,10 +2,9 @@ class BuyersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :contributor_confirmation, only: [:index, :create]
   before_action :move_soldout, only: [:index, :create]
-  
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @buyer_address = BuyerAddress.new
 
     @buyer = Buyer.new
@@ -14,7 +13,6 @@ class BuyersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @buyer_address = BuyerAddress.new(address_params)
     if @buyer_address.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']
@@ -46,6 +44,10 @@ class BuyersController < ApplicationController
   def move_soldout
     @item = Item.find(params[:item_id])
     redirect_to root_path unless @item.buyer == nil
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
