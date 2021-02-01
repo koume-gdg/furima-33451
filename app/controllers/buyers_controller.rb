@@ -1,8 +1,9 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item
   before_action :contributor_confirmation, only: [:index, :create]
   before_action :move_soldout, only: [:index, :create]
-  before_action :set_item, only: [:index, :create]
+  
 
   def index
     @buyer_address = BuyerAddress.new
@@ -34,12 +35,10 @@ class BuyersController < ApplicationController
   end
 
   def contributor_confirmation
-    @item = Item.find(params[:item_id])
     redirect_to root_path unless current_user != @item.user
   end
 
   def move_soldout
-    @item = Item.find(params[:item_id])
     redirect_to root_path unless @item.buyer == nil
   end
 
