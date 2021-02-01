@@ -1,14 +1,15 @@
 class BuyersController < ApplicationController
   def index
+    @item = Item.find(params[:item_id])
     @buyer_address = BuyerAddress.new
     
-    @item = Item.find(params[:item_id])
     @buyer = Buyer.new
     @buyers = @buyer.item
     #インデックスのフォームのあとの変数　＝　フォームオブジェクトの名前.new
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @buyer_address = BuyerAddress.new(address_params)
     if @buyer_address.valid?
       @buyer_address.save
