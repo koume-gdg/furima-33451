@@ -1,6 +1,6 @@
 class BuyersController < ApplicationController
-  before_action :authenticate_user!
-  #before_action :contributor_confirmation
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :contributor_confirmation, only: [:index, :create]
 
   def index
     @item = Item.find(params[:item_id])
@@ -34,10 +34,10 @@ class BuyersController < ApplicationController
       params.require(:buyer_address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
     end
 
-    #def contributor_confirmation
-      #@item = Item.find(params[:item_id])
-      #redirect_to root_path unless current_user == @item.user
-    #end
+    def contributor_confirmation
+      @item = Item.find(params[:item_id])
+      redirect_to root_path unless current_user != @item.user
+    end
     
 
 end
