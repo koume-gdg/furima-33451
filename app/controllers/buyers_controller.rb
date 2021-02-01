@@ -1,6 +1,8 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :contributor_confirmation, only: [:index, :create]
+  before_action :move_soldout, only: [:index, :create]
+  
 
   def index
     @item = Item.find(params[:item_id])
@@ -40,4 +42,10 @@ class BuyersController < ApplicationController
     @item = Item.find(params[:item_id])
     redirect_to root_path unless current_user != @item.user
   end
+
+  def move_soldout
+    @item = Item.find(params[:item_id])
+    redirect_to root_path unless @item.buyer == nil
+  end
+
 end
