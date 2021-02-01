@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
   belongs_to :status
   belongs_to :category
+  has_one :buyer
 
   VALID_PRICE_REGEX = /\A[0-9]+\z/ # 半角数字
 
