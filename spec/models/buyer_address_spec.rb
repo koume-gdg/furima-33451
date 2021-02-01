@@ -2,9 +2,12 @@ require 'rails_helper'
 
 RSpec.describe BuyerAddress, type: :model do
   before do
-    user = FactoryBot.build(:user)
+    sleep 0.4
+    user = FactoryBot.create(:user)
     item = FactoryBot.build(:item)
-    @buyer_address = FactoryBot.build(:buyer_address)
+    item.image = fixture_file_upload('/files/hamburger.jpg')
+    item.save
+    @buyer_address = FactoryBot.build(:buyer_address, user_id: user.id, item_id: item.id)
   end
 
   describe '購入機能' do
