@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
-    
   end
 
   def new
@@ -42,6 +41,7 @@ class ItemsController < ApplicationController
       render :show
     end
   end
+
   private
 
   def item_params

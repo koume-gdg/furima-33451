@@ -18,7 +18,7 @@ RSpec.describe BuyerAddress, type: :model do
         expect(@buyer_address).to be_valid
       end
     end
-    
+
     context '購入できないとき' do
       it 'post_codeが空では購入できない' do
         @buyer_address.post_code = ''
@@ -53,29 +53,26 @@ RSpec.describe BuyerAddress, type: :model do
       it 'post_codeにハイフンが無いと購入できない' do
         @buyer_address.post_code = '1111111'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Post code is invalid")
+        expect(@buyer_address.errors.full_messages).to include('Post code is invalid')
       end
 
       it 'phone_numberが11桁以上では購入できない' do
         @buyer_address.phone_number = '123456789012'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberにハイフンがあると購入できない' do
         @buyer_address.phone_number = '123-4567-89'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalid')
       end
 
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @buyer_address.token = nil
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
       end
-      
-
-
     end
   end
 end
